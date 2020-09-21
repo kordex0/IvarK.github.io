@@ -1,5 +1,5 @@
 var inflationCheck = false
-var betaId = ""
+var betaId = "kordex0_"
 var prefix = betaId + "ds"
 var savePrefix = prefix + "AM_"
 var presetPrefix = prefix + "AM_ST_"
