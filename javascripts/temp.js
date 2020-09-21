@@ -42,11 +42,11 @@ function updateTemp() {
 		tmp.tue = getTreeUpgradeEfficiency()
 	} else tmp.be = false
 	tmp.sacPow = calcTotalSacrificeBoost()
-	updateQCRewardsTemp()
 
 	if (player.meta !== undefined) tmp.mdgm = getMetaDimensionGlobalMultiplier() //Update global multiplier of all Meta Dimensions
 	tmp.mptb = getMPTBase()
 	tmp.mpte = getMPTExp()
+	updateQCRewardsTemp()
 	updatePostInfiTemp()
 	updateInfiniteTimeTemp()
 	updateAntiElectronGalaxiesTemp()
