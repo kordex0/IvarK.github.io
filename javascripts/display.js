@@ -28,16 +28,16 @@ function getGalaxyScaleName(x) {
 
 function intergalacticDisplay(){
 	var shiftRequirement = getShiftRequirement(0);
-	if (player.achievements.includes("ng3p37") && shiftRequirement.tier > 7) {
+	if (player.achievements.includes("ng3p27") && shiftRequirement.tier > 7) {
 		document.getElementById("intergalacticLabel").parentElement.style.display = ""
 		let nanopart = 1
 		if (isNanoEffectUsed("dil_effect_exp")) nanopart = tmp.nf.effects["dil_effect_exp"] || 1
-		document.getElementById("intergalacticLabel").innerHTML = 
-			getGalaxyScaleName(tmp.igs) + 'Intergalactic Boost ' + 
+		document.getElementById("intergalacticLabel").innerHTML =
+			getGalaxyScaleName(tmp.igs) + 'Intergalactic Boost ' +
 			(player.dilation.active || player.galacticSacrifice != undefined ? " (estimated)" : "") +
-			" (" + getFullExpansion(player.galaxies) + (Math.floor(tmp.igg - player.galaxies) > 0 ? " + " + 
-			getFullExpansion(Math.floor(tmp.igg - player.galaxies)) : "") + "): " + 
-			shorten(dilates(tmp.ig).pow(player.dilation.active ? nanopart : 1)) + 
+			" (" + getFullExpansion(player.galaxies) + (Math.floor(tmp.igg - player.galaxies) > 0 ? " + " +
+			getFullExpansion(Math.floor(tmp.igg - player.galaxies)) : "") + "): " +
+			shorten(dilates(tmp.ig).pow(player.dilation.active ? nanopart : 1)) +
 			'x to Eighth Dimensions'
 	} else document.getElementById("intergalacticLabel").parentElement.style.display = "none"
 }
@@ -324,7 +324,7 @@ function preBreakUpgradeDisplay(){
 			document.getElementById("infi" + u + "pow").textContent = u == 5 ? getInfUpgPow(5).toFixed(2) : getFullExpansion(getInfUpgPow(u))
 			document.getElementById("infi" + u + "cost").textContent = shortenCosts(Decimal.pow(10, player.infinityUpgradesRespecced[u] + powAdds[u]))
 			document.getElementById("infi" + u).className = player.infinityPoints.lt(Decimal.pow(10, player.infinityUpgradesRespecced[u] + powAdds[u])) ? "infinistorebtnlocked" : "infinimultbtn"
-		}	
+		}
 	}
 }
 
@@ -332,10 +332,10 @@ function eventsTimeDisplay(years, thisYear){
 	var bc = years - thisYear + 1
 	var since
 	var sinceYears
-	var dates = [5.332e6, 3.5e6,  2.58e6, 7.81e5, 3.15e5, 
-		     2.5e5,   1.95e5, 1.6e5,  1.25e5, 7e4, 
-		     6.7e4,   5e4,   4.5e4,  4e4,   3.5e4, 
-		     3.3e4,   3.1e4,  2.9e4,  2.8e4,  2e4, 
+	var dates = [5.332e6, 3.5e6,  2.58e6, 7.81e5, 3.15e5,
+		     2.5e5,   1.95e5, 1.6e5,  1.25e5, 7e4,
+		     6.7e4,   5e4,   4.5e4,  4e4,   3.5e4,
+		     3.3e4,   3.1e4,  2.9e4,  2.8e4,  2e4,
 		     1.6e4,   1.5e4,  1.4e4,  11600, 1e4,
 		     8e3,    6e3,   5e3,   4e3,   3200,
 		     3000,   2600,  2500,  2300,  1800,
@@ -359,21 +359,21 @@ function eventsTimeDisplay(years, thisYear){
 			index = i
 			break
 		}
-	} // dates[index] < bc <= dates[index-1] 
+	} // dates[index] < bc <= dates[index-1]
 	if (index > 0) { //bc is less than or equal to 5.332e6 (5332e3)
 		since = events[index - 1]
 		sinceYears = bc - dates[index]
 	}
-	var message = "<br>If you wanted to finish writing out your full antimatter amount at a rate of 3 digits per second, you would need to start it in " 
+	var message = "<br>If you wanted to finish writing out your full antimatter amount at a rate of 3 digits per second, you would need to start it in "
 	message += getFullExpansion(Math.floor(bc)) + " BC." + (since ? "<br>This is around " + getFullExpansion(Math.ceil(sinceYears)) + " years before the " + since + "." : "")
 	document.getElementById("infoScale").innerHTML = message
 }
 
 function universesTimeDisplay(years){
 	var message = "<br>The time needed to finish writing your full antimatter amount at a rate of 3 digits per second would span "
-	let unis = years / 13.78e9 
+	let unis = years / 13.78e9
 	// 13.78 Billion years as measured by the CMB (cosmic microwave background) and various models, feel free to change if more accurate data comes along
-	let timebit 
+	let timebit
 	let end = "% of another."
 	if (unis < 1) timebit = (unis * 100).toFixed(3) + "% of a universe."
 	else if (unis < 2) timebit = "1 universe and " + (unis * 100 - 100).toFixed(3) + end
@@ -399,7 +399,7 @@ function infoScaleDisplay(){
 			universesTimeDisplay(years)
 		} else if (years > 1e7) {
 			document.getElementById("infoScale").innerHTML = "<br>The time needed to finish writing your full antimatter amount at a rate of 3 digits per second would span " + Decimal.div(years, 1e6).toFixed(2) + " million years."
-		} else if (years >= thisYear) { 
+		} else if (years >= thisYear) {
 			eventsTimeDisplay(years, thisYear)
 		} else {
 			lifetimeTimeDisplay(years)
@@ -668,7 +668,7 @@ function replicantiDisplay() {
 		let chance = Decimal.times(tmp.rep.chance, 100)
 		document.getElementById("replicantiamount").textContent = shortenDimensions(player.replicanti.amount)
 		document.getElementById("replicantimult").textContent = shorten(getIDReplMult())
-		
+
 		var chanceDisplayEnding = (isChanceAffordable() && player.infinityPoints.lt(Decimal.pow(10,1e10)) ? "<br>+1% Cost: " + shortenCosts(player.replicanti.chanceCost) + " IP" : "")
 		document.getElementById("replicantichance").innerHTML = "Replicate "+(tmp.rep.freq?"amount: "+shorten(tmp.rep.freq)+"x":"chance: "+getFullExpansion(chance.gt(1e12)?chance:Math.round(chance.toNumber()))+"%") + chanceDisplayEnding
 		document.getElementById("replicantiinterval").innerHTML = "Interval: "+timeDisplayShort(Decimal.div(tmp.rep.interval, 100), true, 3) + (isIntervalAffordable() ? "<br>-> "+timeDisplayShort(Decimal.times(tmp.rep.interval, 9e-3), true, 3)+" Cost: "+shortenCosts(player.replicanti.intervalCost)+" IP" : "")
@@ -676,7 +676,7 @@ function replicantiDisplay() {
 		var replGalCostPortion = player.infinityPoints.lt(Decimal.pow(10, 1e10)) ? "<br>+1 Cost: " + shortenCosts(getRGCost()) + " IP" : ""
 		document.getElementById("replicantimax").innerHTML = replGalName + ": " + getFullExpansion(player.replicanti.gal) + (replGalOver > 1 ? "+" + getFullExpansion(replGalOver) : "") + replGalCostPortion
 		document.getElementById("replicantireset").innerHTML = (!tmp.ngp3l && player.achievements.includes("ng3p67") ? "Get " : player.achievements.includes("ngpp16") ? "Divide replicanti amount by " + shorten(Number.MAX_VALUE) + ", but get " : "Reset replicanti amount, but get ")+"1 free galaxy.<br>" + getFullExpansion(player.replicanti.galaxies) + (extraReplGalaxies ? "+" + getFullExpansion(extraReplGalaxies) : "") + " replicated galax" + (getTotalRG() == 1 ? "y" : "ies") + " created."
-		document.getElementById("replicantiapprox").innerHTML = tmp.ngp3 && player.dilation.upgrades.includes("ngpp1") && player.timestudy.studies.includes(192) && player.replicanti.amount.gte(Number.MAX_VALUE) && (!player.aarexModifications.nguspV || player.aarexModifications.nguepV) ? 
+		document.getElementById("replicantiapprox").innerHTML = tmp.ngp3 && player.dilation.upgrades.includes("ngpp1") && player.timestudy.studies.includes(192) && player.replicanti.amount.gte(Number.MAX_VALUE) && (!player.aarexModifications.nguspV || player.aarexModifications.nguepV) ?
 			"Replicanti increases by " + (tmp.rep.est < Math.log10(2) ? "x2.00 per " + timeDisplayShort(Math.log10(2) / tmp.rep.est * 10) : (tmp.rep.est.gte(1e4) ? shorten(tmp.rep.est) + " OoMs" : "x" + shorten(Decimal.pow(10, tmp.rep.est.toNumber()))) + " per second") + ".<br>" +
 			"Replicate interval slows down by " + tmp.rep.speeds.inc.toFixed(3) + "x per " + getFullExpansion(Math.floor(tmp.rep.speeds.exp)) + " OoMs.<br>" +
 			"(2x slower per " + getFullExpansion(Math.floor(tmp.rep.speeds.exp * Math.log10(2) / Math.log10(tmp.rep.speeds.inc))) + " OoMs)" :
