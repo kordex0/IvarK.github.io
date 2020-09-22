@@ -2658,6 +2658,14 @@ function conToDeciPreInf(){
         player.eightCost = new Decimal(player.eightCost)
         player.sacrificed = new Decimal(player.sacrificed)
         player.totalmoney = new Decimal(player.totalmoney)
+        player.firstPow = new Decimal(player.firstPow)
+        player.secondPow = new Decimal(player.secondPow)
+        player.thirdPow = new Decimal(player.thirdPow)
+        player.fourthPow = new Decimal(player.fourthPow)
+        player.fifthPow = new Decimal(player.fifthPow)
+        player.sixthPow = new Decimal(player.sixthPow)
+        player.seventhPow = new Decimal(player.seventhPow)
+        player.eightPow = new Decimal(player.eightPow)
 }
 
 function conToDeciTD(){
